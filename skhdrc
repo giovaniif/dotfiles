@@ -1,0 +1,66 @@
+#SKHD STUFF
+
+## Quickly restart the yabai launch agent
+ctrl + alt + cmd - r : launchctl kickstart -k "gui/${UID}/homebrew.mxcl.yabai"
+
+## Close active application
+alt - x: yabai -m window --close && yabai -m window --focus recent
+
+## open terminal
+alt - return : open -a iTerm
+cmd + alt - return : open -na iTerm
+### open slack
+alt - s : open -a Slack
+### open browser
+alt - b : open -a Safari
+# open compass
+alt - m : open -a "MongoDB Compass"
+# open webstorm
+alt - c : open -a "WebStorm"
+# open spotify
+shift + alt - s : open -a "Spotify"
+# open mail
+alt - d : open -a DataGrip
+# open notes
+alt - n : open -a Notes
+# open notes
+alt - p : open -a Postman
+# open figma
+shift + alt - f : open -a "Figma"
+# open calendar
+shift + alt - c : open -a Calendar
+# open linear
+shift + alt - l : open -a "Linear"
+
+## swap window
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l: yabai -m window --swap east 
+
+## Maximize current window over all windows
+alt - f : ~/.config/yabai/toggle_maximize.sh
+
+# cycle through windows
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+alt - k : yabai -m window --focus north
+alt - j : yabai -m window --focus south
+
+## toggle window split type
+alt - y : yabai -m window --toggle split
+
+# Switch focus to the next monitor
+cmd + alt - n : yabai -m display --focus next || yabai -m display --focus first 
+
+# Switch focus to the previous monitor
+cmd + alt - p : yabai -m display --focus prev || yabai -m display --focus last
+
+# Move focused window to display 1 and ensure it is focused
+cmd + shift - 1 : \
+  yabai -m query --windows --window | jq '.id' | xargs -I {} sh -c 'yabai -m window --display 1 && yabai -m display --focus 1 && yabai -m window --focus {}'
+
+# Move focused window to display 2 and ensure it is focused
+cmd + shift - 2 : \
+  yabai -m query --windows --window | jq '.id' | xargs -I {} sh -c 'yabai -m window --display 2 && yabai -m display --focus 2 && yabai -m window --focus {}'
+
