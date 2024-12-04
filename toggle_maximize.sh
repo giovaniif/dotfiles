@@ -1,0 +1,1 @@
+/Users/giovanifarias/.config/yabai/toggle_maximize.sh
